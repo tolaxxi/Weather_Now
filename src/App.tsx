@@ -1,10 +1,11 @@
-import Header from './sections/Header';
+import SearchContextProvider from './contexts/search/SearchContextProvider';
+import Home from './pages/Home';
 
 const App = () => {
   return (
-    <div className="bg-neutral-900 w-full h-dvh">
-      <Header />
-    </div>
+    <SearchContextProvider>
+      <Home />
+    </SearchContextProvider>
   );
 };
 export default App;
