@@ -1,22 +1,28 @@
-import weatherImage from '../assets/images/icon-sunny.webp';
+import { useState } from 'react';
+import sunnyImage from '../assets/images/icon-sunny.webp';
+
 const WeatherCard = () => {
-  //
-  const location = 'Berlin, germany';
-  const date = 'Tuesday, aug 5,2025';
-  const temperature = 21;
+  const [country, setCountry] = useState('');
+  const [city, setCity] = useState('');
+  const [date, setDate] = useState('');
+  const [weather, setWeather] = useState('');
 
   return (
-    <div className="w-full min-h-58 rounded-2xl font-DM-sans bg-no-repeat text-center flex flex-col text-2xl items-center justify-center small-weather-card-bg md:large-weather-card-bg bg-no-repeat bg-center bg-cover">
-      <div className="font-medium text-2xl capitalize text-neutral-0">
-        <h2>{location}</h2>
-        <p className="text-sm font-light capitalize">{date}</p>
+    <section
+      className="min-h-60 overflow-hidden border w-full max-w-70 bg-center bg-cover xxs:max-w-[650px] font-DM-sans text-neutral-0 rounded-xl bg-[url('/bg/bg-today-small.svg')]
+    xs:bg-[url('/bg/bg-today-large.svg')] bg-no-repeat  flex items-centers"
+    >
+      <div className=" flex flex-col sm:flex-row items-center justify-center gap-5 w-full font-DM-sans sm:px-10 text-center">
+        <div className="">
+          <h2 className="capitalize font-medium text-2xl">Berlin,Germany</h2>
+          <p className="capitalize font-light text-sm">Tuesday, Aug 5,2025</p>
+        </div>
+        <div className="text-7xl lg:text-8xl font-DM-sans  italic flex font-medium  items-center">
+          <img src={`${sunnyImage}`} className="w-25 sm:w-35" />
+          <p>20&deg;</p>
+        </div>
       </div>
-      <span className="flex  items-center font-bold  text-neutral-0 text-7xl italic">
-        <img src={weatherImage} alt="" className="w-30" />
-        <h2>{temperature}&deg;</h2>
-      </span>
-    </div>
+    </section>
   );
 };
-
 export default WeatherCard;
