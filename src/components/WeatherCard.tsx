@@ -9,7 +9,7 @@ const WeatherCard = () => {
 
   return (
     <section
-      className="min-h-60 overflow-hidden border w-full max-w-70 bg-center bg-cover xxs:max-w-[650px] font-DM-sans text-neutral-0 rounded-xl bg-[url('/bg/bg-today-small.svg')]
+      className="min-h-60 overflow-hidden w-full max-w-70 bg-center bg-cover xxs:max-w-[650px] font-DM-sans text-neutral-0 rounded-xl bg-[url('/bg/bg-today-small.svg')]
     xs:bg-[url('/bg/bg-today-large.svg')] bg-no-repeat  flex items-centers"
     >
       <div className=" flex flex-col sm:flex-row items-center justify-center gap-5 w-full font-DM-sans sm:px-10 text-center">
