@@ -1,11 +1,10 @@
-import { useState } from 'react';
 import sunnyImage from '../assets/images/icon-sunny.webp';
+import useGeolocation from '../hooks/useGeolocation';
+import useSearch from '../contexts/search/useSearch';
 
 const WeatherCard = () => {
-  const [country, setCountry] = useState('');
-  const [city, setCity] = useState('');
-  const [date, setDate] = useState('');
-  const [weather, setWeather] = useState('');
+  const { query } = useSearch();
+  const { city, country } = useGeolocation(query);
 
   return (
     <section
@@ -14,7 +13,11 @@ const WeatherCard = () => {
     >
       <div className=" flex flex-col sm:flex-row items-center justify-center gap-5 w-full font-DM-sans sm:px-10 text-center">
         <div className="">
-          <h2 className="capitalize font-medium text-2xl">Berlin,Germany</h2>
+          {city && (
+            <h2 className="capitalize font-medium text-2xl">
+              {city}, {country}
+            </h2>
+          )}
           <p className="capitalize font-light text-sm">Tuesday, Aug 5,2025</p>
         </div>
         <div className="text-7xl lg:text-8xl font-DM-sans  italic flex font-medium  items-center">
