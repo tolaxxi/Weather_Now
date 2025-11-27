@@ -1,51 +1,69 @@
-export const weatherIcons = {
-  // Clear / Sunny
-  0: 'src/assets/images/icon-sunny.webp',
-  1: 'src/assets/images/icon-partly-cloudy.webp',
-  2: 'src/assets/images/icon-partly-cloudy.webp',
-  3: 'src/assets/images/icon-overcast.webp',
+import sunnyIcon from '../assets/images/icon-sunny.webp';
+import partlyCloudyIcon from '../assets/images/icon-partly-cloudy.webp';
+import overcastIcon from '../assets/images/icon-overcast.webp';
 
-  // Fog / Mist
-  45: 'src/assets/images/icon-fog.webp',
-  48: 'src/assets/images/icon-fog.webp',
+import fogIcon from '../assets/images/icon-fog.webp';
+
+import drizzleIcon from '../assets/images/icon-drizzle.webp';
+
+import rainIcon from '../assets/images/icon-rain.webp';
+
+import snowIcon from '../assets/images/icon-snow.webp';
+
+import stormIcon from '../assets/images/icon-storm.webp';
+
+export const weatherIcon: Record<number, string> = {
+  // Clear / Sunny
+  0: sunnyIcon,
+  1: partlyCloudyIcon,
+  2: partlyCloudyIcon,
+  3: overcastIcon,
+
+  // Fog
+  45: fogIcon,
+  48: fogIcon,
 
   // Drizzle
-  51: 'src/assets/images/icon-drizzle.webp',
-  53: 'src/assets/images/icon-drizzle.webp',
-  55: 'src/assets/images/icon-drizzle.webp',
+  51: drizzleIcon,
+  53: drizzleIcon,
+  55: drizzleIcon,
 
   // Freezing Drizzle
-  56: 'src/assets/images/icon-drizzle.webp',
-  57: 'src/assets/images/icon-drizzle.webp',
+  56: drizzleIcon,
+  57: drizzleIcon,
 
   // Rain
-  61: 'src/assets/images/icon-rain.webp',
-  63: 'src/assets/images/icon-rain.webp',
-  65: 'src/assets/images/icon-rain.webp',
+  61: rainIcon,
+  63: rainIcon,
+  65: rainIcon,
 
   // Freezing Rain
-  66: 'src/assets/images/icon-rain.webp',
-  67: 'src/assets/images/icon-rain.webp',
+  66: rainIcon,
+  67: rainIcon,
 
   // Snow
-  71: 'src/assets/images/icon-snow.webp',
-  73: 'src/assets/images/icon-snow.webp',
-  75: 'src/assets/images/icon-snow.webp',
+  71: snowIcon,
+  73: snowIcon,
+  75: snowIcon,
 
   // Snow Grains
-  77: 'src/assets/images/icon-snow.webp',
+  77: snowIcon,
 
-  // Rain + Snow (Mixed)
-  80: 'src/assets/images/icon-rain.webp',
-  81: 'src/assets/images/icon-rain.webp',
-  82: 'src/assets/images/icon-rain.webp',
+  // Rain + Snow
+  80: rainIcon,
+  81: rainIcon,
+  82: rainIcon,
 
-  // Showers
-  85: 'src/assets/images/icon-snow.webp',
-  86: 'src/assets/images/icon-snow.webp',
+  // Snow Showers
+  85: snowIcon,
+  86: snowIcon,
 
-  // Thunderstorm
-  95: 'src/assets/images/icon-storm.webp',
-  96: 'src/assets/images/icon-storm.webp',
-  99: 'src/assets/images/icon-storm.webp',
+  // Thunderstorms
+  95: stormIcon,
+  96: stormIcon,
+  99: stormIcon,
 };
+
+export function getWeatherIcon(weatherCode: string): string {
+  return weatherIcon[Number(weatherCode)];
+}

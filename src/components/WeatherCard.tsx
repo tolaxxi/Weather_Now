@@ -1,10 +1,21 @@
-import sunnyImage from '../assets/images/icon-sunny.webp';
 import useGeolocation from '../hooks/useGeolocation';
 import useSearch from '../contexts/search/useSearch';
+import useWeather from '../hooks/useWeather';
+import { getWeatherIcon } from '../utils/WeatherIcon';
 
 const WeatherCard = () => {
   const { query } = useSearch();
   const { city, country } = useGeolocation(query);
+  const { time, currentTemp, currentWeatherCode } = useWeather();
+
+  const date = new Date(time);
+
+  const formattedDate = date.toLocaleDateString('en-US', {
+    weekday: 'short',
+    month: 'long',
+    day: 'numeric',
+    year: 'numeric',
+  });
 
   return (
     <section
@@ -18,11 +29,11 @@ const WeatherCard = () => {
               {city}, {country}
             </h2>
           )}
-          <p className="capitalize font-light text-sm">Tuesday, Aug 5,2025</p>
+          <p className="capitalize font-light text-sm">{time && formattedDate}</p>
         </div>
         <div className="text-7xl lg:text-8xl font-DM-sans  italic flex font-medium  items-center">
-          <img src={`${sunnyImage}`} className="w-25 sm:w-35" />
-          <p>20&deg;</p>
+          {currentWeatherCode !== null && <img src={getWeatherIcon(currentWeatherCode)} className="w-25 sm:w-35" />}
+          {currentTemp && <p>{Math.ceil(Number(currentTemp))}&deg;</p>}
         </div>
       </div>
     </section>

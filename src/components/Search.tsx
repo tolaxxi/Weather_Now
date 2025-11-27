@@ -2,11 +2,14 @@ import { useState } from 'react';
 import searchIcon from '../assets/images/icon-search.svg';
 import useSearch from '../contexts/search/useSearch';
 import SearchButton from './SearchButton';
+import useWeather from '../hooks/useWeather';
+import SearchLoadingState from './SearchLoadingState';
 
 const Search = () => {
   const [input, setInput] = useState('');
 
   const { setQuery } = useSearch();
+  const { loading } = useWeather();
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -15,16 +18,22 @@ const Search = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="flex font-DM-sans flex-col gap-2.5 sm:flex-row sm:max-w-[80%] lg:max-w-[50%] w-full">
-      <div className="text-neutral-0 bg-neutral-800 py-3 px-4 w-full flex gap-3 items-center rounded-xl">
-        <img src={searchIcon} alt="Search icon" className='w-4.5' />
-        <input
-          type="text"
-          placeholder="Search for a place..."
-          value={input}
-          className="flex-1 outline-0 font-DM-sans text-lg"
-          onChange={(e) => setInput(e.target.value)}
-        />
+    <form
+      onSubmit={handleSubmit}
+      className="flex font-DM-sans flex-col gap-2.5 sm:flex-row sm:max-w-[80%] lg:max-w-[50%] w-full items-start"
+    >
+      <div className="flex flex-col w-full gap-2">
+        <div className="text-neutral-0 bg-neutral-800 py-3 px-4 w-full flex gap-3 items-center rounded-xl">
+          <img src={searchIcon} alt="Search icon" className="w-4.5" />
+          <input
+            type="text"
+            placeholder="Search for a place..."
+            value={input}
+            className="flex-1 outline-0 font-DM-sans text-lg"
+            onChange={(e) => setInput(e.target.value)}
+          />
+        </div>
+        {loading && <SearchLoadingState />}
       </div>
       <SearchButton />
     </form>
