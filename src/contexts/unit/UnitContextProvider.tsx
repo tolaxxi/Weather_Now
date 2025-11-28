@@ -7,17 +7,46 @@ interface UnitContextProviderPropTypes {
 
 const UnitContextProvider = ({ children }: UnitContextProviderPropTypes) => {
   // space here
-  const [unit, setUnit] = useState('');
-  const [precipitation_unit, setPrecipitation_unit] = useState('');
-  const [wind_speed_unit, setWind_speed_unit] = useState('');
+
+  const [isImperial, setIsImperial] = useState(false);
+  const [isCelsius, setIsCelsius] = useState(false);
+  const [isFahrenheit, setIsFahrenheit] = useState(false);
+  const [isKmh, setIsKmh] = useState(false);
+  const [isMph, setIsMph] = useState(false);
+  const [isMm, setIsMm] = useState(false);
+  const [isInch, setIsInch] = useState(false);
+
+  const [unit, setUnit] = useState<'celsius' | 'fahrenheit'>('celsius');
+  const [wind_speed_unit, setWind_speed_unit] = useState<'mph' | 'kmh'>('kmh');
+  const [precipitation_unit, setPrecipitation_unit] = useState<'mm' | 'inch'>('mm');
+  const [humidity_unit, setHumidity_unit] = useState('');
 
   const value = {
+    isImperial,
+    isCelsius,
+    isFahrenheit,
+    isKmh,
+    isMph,
+    isMm,
+    isInch,
+
+    setIsImperial,
+    setIsCelsius,
+    setIsFahrenheit,
+    setIsKmh,
+    setIsMph,
+    setIsMm,
+    setIsInch,
+
     unit,
-    setUnit,
-    setPrecipitation_unit,
-    precipitation_unit,
-    setWind_speed_unit,
     wind_speed_unit,
+    precipitation_unit,
+    humidity_unit,
+
+    setUnit,
+    setWind_speed_unit,
+    setPrecipitation_unit,
+    setHumidity_unit,
   };
   return <UnitContext.Provider value={value}>{children}</UnitContext.Provider>;
 };

@@ -36,7 +36,11 @@
   @apply flex flex-col items-start gap-2  w-full pt-5;
 }
 .dropdown-menu-btn {
-  @apply text-sm text-neutral-100 text-start p-2 bg-neutral-700 w-full rounded-md;
+  @apply text-sm text-neutral-100 text-start p-2 w-full rounded-md flex justify-between items-center;
+}
+
+.dropdown-menu-active {
+  @apply bg-neutral-700;
 }
 .dropdown-menu-btn-section {
   @apply w-full gap-1 flex flex-col;

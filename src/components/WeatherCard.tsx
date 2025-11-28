@@ -33,7 +33,7 @@ const WeatherCard = () => {
         </div>
         <div className="text-7xl lg:text-8xl font-DM-sans  italic flex font-medium  items-center">
           {currentWeatherCode !== null && <img src={getWeatherIcon(currentWeatherCode)} className="w-25 sm:w-35" />}
-          {currentTemp && <p>{Math.ceil(Number(currentTemp))}&deg;</p>}
+          {currentTemp && <p>{Math.floor(Number(currentTemp))}&deg;</p>}
         </div>
       </div>
     </section>

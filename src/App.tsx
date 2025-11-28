@@ -1,10 +1,13 @@
 import SearchContextProvider from './contexts/search/SearchContextProvider';
+import UnitContextProvider from './contexts/unit/UnitContextProvider';
 import Home from './pages/Home';
 
 const App = () => {
   return (
     <SearchContextProvider>
-      <Home />
+      <UnitContextProvider>
+        <Home />
+      </UnitContextProvider>
     </SearchContextProvider>
   );
 };
