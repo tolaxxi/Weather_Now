@@ -8,33 +8,36 @@ const AtmosphereSection = () => {
   const roundedTemp = Math.floor(Number(currentTemp));
   const roundedWind = Math.floor(Number(currentWindSpeed));
 
+  const hasWeather =
+    currentTemp !== null && currentTemp !== undefined && currentTemp !== '' && !isNaN(Number(currentTemp));
+
   const AtmosphereCardDetails = [
     {
       id: 1,
       title: 'Feels like',
-      value: roundedTemp.toString(),
-      unit: '°',
+      value: hasWeather ? roundedTemp.toString() : '__',
+      unit: hasWeather ? '°' : '',
       space: false,
     },
     {
       id: 2,
       title: 'Humidity',
-      value: currentHumidity,
-      unit: humidity_unit,
+      value: hasWeather ? currentHumidity : '__',
+      unit: hasWeather ? humidity_unit : '',
       space: false,
     },
     {
       id: 3,
       title: 'Wind',
-      value: roundedWind.toString(),
-      unit: wind_speed_unit,
+      value: hasWeather ? roundedWind.toString() : '__',
+      unit: hasWeather ? wind_speed_unit : '',
       space: true,
     },
     {
       id: 4,
       title: 'Precipitation',
-      value: currentPrecipitation,
-      unit: precipitation_unit,
+      value: hasWeather ? currentPrecipitation : '__',
+      unit: hasWeather ? precipitation_unit : '',
       space: true,
     },
   ];
