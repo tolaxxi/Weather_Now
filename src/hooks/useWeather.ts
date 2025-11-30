@@ -13,6 +13,7 @@ const useWeather = () => {
   const [currentHumidity, setCurrentHumidity] = useState('');
   const [currentPrecipitation, setCurrentPrecipitation] = useState('');
   const [currentWindSpeed, setCurrentWindSpeed] = useState('');
+  const [dailyForecast, setDailyForecast] = useState([]);
   const [currentWeatherCode, setCurrentWeatherCode] = useState(null);
 
   const [loading, setLoading] = useState(false);
@@ -24,6 +25,8 @@ const useWeather = () => {
         setLoading(true);
         try {
           const weather = await fetchWeatherData({ longitude, latitude, unit, precipitation_unit, wind_speed_unit });
+
+          // current day weather data
           setTime(weather.current.time);
           setCurrentTemp(weather.current.temperature_2m);
           setCurrentWeatherCode(weather.current.weather_code);
@@ -31,7 +34,22 @@ const useWeather = () => {
           setCurrentHumidity(weather.current.relative_humidity_2m);
           setCurrentWindSpeed(weather.current.wind_speed_10m);
           setCurrentPrecipitation(weather.current.precipitation);
+
+          // daily weather forecast
+          const daily = weather.daily;
+          const mappedDailyForecast = daily.time.map((date: string, index: number) => ({
+            date,
+            MaxTemperature: daily.temperature_2m_max[index],
+            minTemperature: daily.temperature_2m_min[index],
+            weatherCode: daily.weather_code[index],
+          }));
+
+          setDailyForecast(mappedDailyForecast);
+
+          console.log(weather.daily);
           console.log(weather);
+
+          // hourly forecast data
         } catch (err) {
           console.log(err);
         } finally {
@@ -52,6 +70,7 @@ const useWeather = () => {
     humidity_unit,
     currentWindSpeed,
     currentPrecipitation,
+    dailyForecast,
   };
 };
 export default useWeather;

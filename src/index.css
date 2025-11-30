@@ -26,7 +26,7 @@
   --font-DM-sans: 'DM Sans';
   --font-Bricolage-Grotesque: 'Bricolage Grotesque';
 
-  --breakpoint-xxs: 20rem;
+  --breakpoint-xxs: 18rem;
   --breakpoint-xs: 25rem;
 }
 .dropdown-menu-section {
@@ -49,6 +49,7 @@
 
 ::-webkit-scrollbar {
   width: 5px;
+  height: 5px;
 }
 ::-webkit-scrollbar-track {
   background: transparent;

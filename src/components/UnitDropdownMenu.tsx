@@ -9,7 +9,7 @@ const UnitDropdownMenu = () => {
     useUnitHelper();
 
   return (
-    <aside className="bg-neutral-800 18 p-1.5 flex flex-col items-start text-xs font-DM-sans font-medium text-neutral-300 rounded-xl w-50 ">
+    <aside className="bg-neutral-800 18 p-1.5   border-neutral-600 border flex flex-col items-start text-xs font-DM-sans font-medium text-neutral-300 rounded-xl w-50 ">
       <button className={`dropdown-menu-btn ${isImperial && 'dropdown-menu-active'}`} onClick={toggleImperial}>
         Switch to Imperial {isImperial && <img src={activeImage} alt="check mark image" />}
       </button>

@@ -43,7 +43,7 @@ const AtmosphereSection = () => {
   ];
 
   return (
-    <section className="grid grid-cols-2 gap-2">
+    <section className="grid grid-cols-2 sm:flex gap-2 ">
       {AtmosphereCardDetails.map(({ title, id, value, unit, space }) => {
         return <Atmosphere key={id} title={title} value={value} unit={unit} space={space} />;
       })}
