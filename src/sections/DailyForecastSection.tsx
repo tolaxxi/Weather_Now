@@ -7,7 +7,7 @@ const DailyForecastSection = () => {
   const placeholderLength = 7;
   if (dailyForecast.length === 0) {
     return (
-      <section className="grid place-items-center grid-cols-3 flex-3 gap-2   md:flex">
+      <section className="grid grid-cols-3 gap-2  sm:flex">
         {Array.from({ length: placeholderLength }).map((_, index) => {
           return <DailyForecastLoadingState key={index} />;
         })}
@@ -15,7 +15,7 @@ const DailyForecastSection = () => {
     );
   }
   return (
-    <section className="grid place-items-center grid-cols-3 flex-3 gap-2 md:flex">
+    <section className="grid  grid-cols-3 flex-3 gap-2 sm:flex">
       {loading
         ? Array.from({ length: placeholderLength }).map((_, index) => {
             return <DailyForecastLoadingState key={index} />;

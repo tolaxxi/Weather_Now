@@ -6,7 +6,7 @@ interface AtmospherePropsTypes {
 }
 const Atmosphere = ({ title, value, unit, space }: AtmospherePropsTypes) => {
   return (
-    <div className="bg-neutral-800 text-neutral-0 py-5 px-3 sm:w-36 md:w-39 rounded-2xl font-DM-sans border-neutral-600 border flex flex-col gap-5">
+    <div className="bg-neutral-800 text-neutral-0 py-5 px-3 sm:w-36.5 md:w-43 rounded-2xl font-DM-sans border-neutral-600 border flex flex-col gap-5">
       <p className="text-lg text-neutral-300 ">{title}</p>
       <h2 className="text-3xl">
         {value}

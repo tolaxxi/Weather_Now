@@ -16,7 +16,7 @@ const DailyForecast = ({ temp, date, minTemp, weatherCode }: DailyForeCastPropTy
   });
 
   return (
-    <div className=" flex flex-col items-center gap-1 p-2  min-w-[95px]  rounded-xl text-neutral-0 bg-neutral-800 font-DM-sans font-medium border border-neutral-600">
+    <div className=" flex flex-col items-center gap-1 p-2 w-[95px] xs:w-[105px]  sm:w-20 md:w-[95px]  rounded-xl text-neutral-0 bg-neutral-800 font-DM-sans font-medium border border-neutral-600">
       <h3 className=" font-medium">{date && formattedDate}</h3>
       <img src={getWeatherIcon(weatherCode)} alt="Weather_icon" className="w-10" />
       <span className="flex gap-5">

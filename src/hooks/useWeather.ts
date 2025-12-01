@@ -14,6 +14,7 @@ const useWeather = () => {
   const [currentPrecipitation, setCurrentPrecipitation] = useState('');
   const [currentWindSpeed, setCurrentWindSpeed] = useState('');
   const [dailyForecast, setDailyForecast] = useState([]);
+  const [hourlyForecast, setHourlyForeCast] = useState([]);
   const [currentWeatherCode, setCurrentWeatherCode] = useState(null);
 
   const [loading, setLoading] = useState(false);
@@ -50,6 +51,15 @@ const useWeather = () => {
           console.log(weather);
 
           // hourly forecast data
+
+          const hourly = weather.hourly;
+
+          const mappedHourlyData = hourly.time.map((time: string, index: number) => ({
+            time,
+            weatherCode: hourly.weather_code[index],
+            temperature: hourly.temperature_2m[index],
+          }));
+          setHourlyForeCast(mappedHourlyData);
         } catch (err) {
           console.log(err);
         } finally {
@@ -71,6 +81,7 @@ const useWeather = () => {
     currentWindSpeed,
     currentPrecipitation,
     dailyForecast,
+    hourlyForecast,
   };
 };
 export default useWeather;

@@ -19,14 +19,14 @@ const WeatherCard = () => {
 
   return (
     <section
-      className={`min-h-60 overflow-hidden w-full max-w-70 bg-center bg-cover xxs:max-w-[650px] font-DM-sans text-neutral-0 rounded-xl ${
+      className={`min-h-60 overflow-hidden w-full md:w-[710px] bg-center bg-cover  font-DM-sans text-neutral-0 rounded-xl ${
         longitude && latitude
           ? loading
             ? 'bg-neutral-800'
             : "bg-[url('/bg/bg-today-small.svg')] xs:bg-[url('/bg/bg-today-large.svg')] "
           : 'bg-neutral-800'
       }
-     bg-no-repeat  flex items-centers`}
+     bg-no-repeat  flex items-center`}
     >
       {longitude && latitude ? (
         loading ? (

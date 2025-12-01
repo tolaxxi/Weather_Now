@@ -26,8 +26,7 @@
   --font-DM-sans: 'DM Sans';
   --font-Bricolage-Grotesque: 'Bricolage Grotesque';
 
-  --breakpoint-xxs: 18rem;
-  --breakpoint-xs: 25rem;
+  --breakpoint-xs: 20.063rem;
 }
 .dropdown-menu-section {
   @apply flex flex-col items-start gap-1 border-b w-full py-5;
@@ -38,7 +37,9 @@
 .dropdown-menu-btn {
   @apply text-sm text-neutral-100 text-start p-2 w-full rounded-md flex justify-between items-center;
 }
-
+.dayOfTheWeek-menu-btn {
+  @apply text-sm text-neutral-100 text-start p-1 pl-2 w-full rounded-md flex;
+}
 .dropdown-menu-active {
   @apply bg-neutral-700;
 }
@@ -65,21 +66,25 @@
 }
 /* loader */
 
-
 .loader {
   width: 60px;
   aspect-ratio: 2;
   --_g: no-repeat radial-gradient(circle closest-side, #fff 90%, #0000);
-  background: 
-    var(--_g) 0%   50%,
-    var(--_g) 50%  50%,
-    var(--_g) 100% 50%;
-  background-size: calc(100%/3) 50%;
+  background: var(--_g) 0% 50%, var(--_g) 50% 50%, var(--_g) 100% 50%;
+  background-size: calc(100% / 3) 50%;
   animation: l3 1s infinite linear;
 }
 @keyframes l3 {
-    20%{background-position:0%   0%, 50%  50%,100%  50%}
-    40%{background-position:0% 100%, 50%   0%,100%  50%}
-    60%{background-position:0%  50%, 50% 100%,100%   0%}
-    80%{background-position:0%  50%, 50%  50%,100% 100%}
+  20% {
+    background-position: 0% 0%, 50% 50%, 100% 50%;
+  }
+  40% {
+    background-position: 0% 100%, 50% 0%, 100% 50%;
+  }
+  60% {
+    background-position: 0% 50%, 50% 100%, 100% 0%;
+  }
+  80% {
+    background-position: 0% 50%, 50% 50%, 100% 100%;
+  }
 }

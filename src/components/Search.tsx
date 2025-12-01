@@ -20,7 +20,7 @@ const Search = () => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="flex font-DM-sans flex-col gap-2.5 sm:flex-row sm:max-w-[80%] lg:max-w-[50%] w-full items-start"
+      className="flex font-DM-sans flex-col gap-2.5 sm:flex-row xs:max-w-[330px] sm:max-w-[80%] lg:max-w-[50%] w-full items-start"
     >
       <div className="flex flex-col w-full gap-2">
         <div className="text-neutral-0 bg-neutral-800 py-3 px-4 w-full flex gap-3 items-center rounded-xl">
