@@ -29,4 +29,4 @@ export async function fetchWeatherData({
   }
 }
 
-// https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&daily=weather_code,wind_speed_10m_max,temperature_2m_max&hourly=temperature_2m,relative_humidity_2m,wind_speed_10m,precipitation,weather_code&current=temperature_2m,relative_humidity_2m,precipitation,wind_speed_10m,weather_code&wind_speed_unit=mph&temperature_unit=fahrenheit&precipitation_unit=inch&bounding_box=-90,-180,90,180
+

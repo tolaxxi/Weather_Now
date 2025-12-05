@@ -6,20 +6,36 @@ const useGeolocation = (query: string) => {
   const [latitude, setLatitude] = useState('');
   const [city, setCity] = useState('');
   const [country, setCountry] = useState('');
+  const [searchFound, setSearchFound] = useState<boolean | null>(null);
 
   useEffect(() => {
     async function fetchGeolocation() {
       if (query) {
-        const geoLocation = await GeocodeSearch({ query });
-        setLongitude(geoLocation.results[0].longitude);
-        setLatitude(geoLocation.results[0].latitude);
-        setCountry(geoLocation.results[0].country);
-        setCity(geoLocation.results[0].name);
+        try {
+          const geoLocation = await GeocodeSearch({ query });
+
+          if (geoLocation.results && geoLocation.results.length > 0) {
+            const results = geoLocation.results[0];
+            setLongitude(results.longitude);
+            setLatitude(results.latitude);
+            setCountry(results.country);
+            setCity(results.name);
+            setSearchFound(true);
+          } else {
+            setSearchFound(false);
+            setLongitude('');
+            setLatitude('');
+            setCountry('');
+            setCity('');
+          }
+        } catch {
+          //
+        }
       }
     }
     fetchGeolocation();
   }, [query]);
 
-  return { longitude, latitude, city, country };
+  return { longitude, latitude, city, country, searchFound };
 };
 export default useGeolocation;

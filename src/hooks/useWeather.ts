@@ -6,7 +6,7 @@ import useUnitContextProvider from '../contexts/unit/useUnitContextProvider';
 
 const useWeather = () => {
   const { query } = useSearch();
-  const { longitude, latitude } = useGeolocation(query);
+  const { longitude, latitude, searchFound } = useGeolocation(query);
 
   const [time, setTime] = useState('');
   const [currentTemp, setCurrentTemp] = useState('');
@@ -18,12 +18,14 @@ const useWeather = () => {
   const [currentWeatherCode, setCurrentWeatherCode] = useState(null);
 
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const { unit, precipitation_unit, wind_speed_unit, humidity_unit, setHumidity_unit } = useUnitContextProvider();
 
   useEffect(() => {
     async function getWeatherData() {
       if (longitude && latitude) {
         setLoading(true);
+        setError(null);
         try {
           const weather = await fetchWeatherData({ longitude, latitude, unit, precipitation_unit, wind_speed_unit });
 
@@ -61,7 +63,7 @@ const useWeather = () => {
           }));
           setHourlyForeCast(mappedHourlyData);
         } catch (err) {
-          console.log(err);
+          if (err instanceof Error) setError(err.message || 'Something went wrong');
         } finally {
           setLoading(false);
         }
@@ -69,7 +71,7 @@ const useWeather = () => {
     }
 
     getWeatherData();
-  }, [longitude, latitude, unit, precipitation_unit, wind_speed_unit, setHumidity_unit]);
+  }, [longitude, latitude, unit, precipitation_unit, wind_speed_unit]);
 
   return {
     time,
@@ -82,6 +84,8 @@ const useWeather = () => {
     currentPrecipitation,
     dailyForecast,
     hourlyForecast,
+    error,
+    searchFound,
   };
 };
 export default useWeather;
