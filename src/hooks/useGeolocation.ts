@@ -7,10 +7,14 @@ const useGeolocation = (query: string) => {
   const [city, setCity] = useState('');
   const [country, setCountry] = useState('');
   const [searchFound, setSearchFound] = useState<boolean | null>(null);
+  const [geoLoading, setGeoLoading] = useState(false);
 
   useEffect(() => {
     async function fetchGeolocation() {
       if (query) {
+        setSearchFound(null);
+        setGeoLoading(true);
+
         try {
           const geoLocation = await GeocodeSearch({ query });
 
@@ -28,14 +32,14 @@ const useGeolocation = (query: string) => {
             setCountry('');
             setCity('');
           }
-        } catch {
-          //
+        } finally {
+          setGeoLoading(false);
         }
       }
     }
     fetchGeolocation();
   }, [query]);
 
-  return { longitude, latitude, city, country, searchFound };
+  return { longitude, latitude, city, country, searchFound, geoLoading };
 };
 export default useGeolocation;

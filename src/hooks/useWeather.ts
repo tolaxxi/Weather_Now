@@ -4,9 +4,15 @@ import useGeolocation from './useGeolocation';
 import useSearch from '../contexts/search/useSearch';
 import useUnitContextProvider from '../contexts/unit/useUnitContextProvider';
 
+type HourlyData = {
+  time: string;
+  temperature: number;
+  weatherCode: number;
+};
+
 const useWeather = () => {
   const { query } = useSearch();
-  const { longitude, latitude, searchFound } = useGeolocation(query);
+  const { longitude, latitude, searchFound, geoLoading } = useGeolocation(query);
 
   const [time, setTime] = useState('');
   const [currentTemp, setCurrentTemp] = useState('');
@@ -14,7 +20,7 @@ const useWeather = () => {
   const [currentPrecipitation, setCurrentPrecipitation] = useState('');
   const [currentWindSpeed, setCurrentWindSpeed] = useState('');
   const [dailyForecast, setDailyForecast] = useState([]);
-  const [hourlyForecast, setHourlyForeCast] = useState([]);
+  const [hourlyForecast, setHourlyForeCast] = useState<HourlyData[]>([]);
   const [currentWeatherCode, setCurrentWeatherCode] = useState(null);
 
   const [loading, setLoading] = useState(false);
@@ -86,6 +92,7 @@ const useWeather = () => {
     hourlyForecast,
     error,
     searchFound,
+    geoLoading,
   };
 };
 export default useWeather;

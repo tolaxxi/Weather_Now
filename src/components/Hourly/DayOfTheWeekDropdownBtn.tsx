@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import dropDown from '../../assets/images/icon-dropdown.svg';
 import DayOfTheWeekMenu from './DayOfTheWeekMenu';
+import useWeather from '../../hooks/useWeather';
 
 interface Props {
   selectedDay: string | null;
@@ -9,6 +10,7 @@ interface Props {
 const DayOfTheWeekDropdownBtn = ({ selectedDay, setSelectedDay }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
+  const { loading, hourlyForecast } = useWeather();
 
   function handleToggle() {
     setIsOpen(!isOpen);
@@ -32,7 +34,7 @@ const DayOfTheWeekDropdownBtn = ({ selectedDay, setSelectedDay }: Props) => {
         className="capitalize relative flex gap-2 justify-center text-sm items-center px-5 py-1  bg-neutral-700 rounded-sm"
         onClick={handleToggle}
       >
-        <p>{selectedDay || 'Select Day'}</p>
+        <p>{loading || hourlyForecast.length === 0 ? '-' : selectedDay}</p>
         <img src={dropDown} alt="dropdown icon" />
       </div>
       {isOpen && (
