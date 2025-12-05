@@ -31,7 +31,7 @@ const DayOfTheWeekDropdownBtn = ({ selectedDay, setSelectedDay }: Props) => {
   return (
     <div ref={menuRef}>
       <div
-        className="capitalize relative flex gap-2 justify-center text-sm items-center px-5 py-1  bg-neutral-700 rounded-sm"
+        className="capitalize relative flex gap-2 justify-center text-sm items-center px-5 py-1  bg-neutral-700 rounded-sm cursor-pointer"
         onClick={handleToggle}
       >
         <p>{loading || hourlyForecast.length === 0 ? '-' : selectedDay}</p>

@@ -15,7 +15,7 @@ const HourlyCard = ({ weatherCode, time, temp }: HourlyCardPropsTypes) => {
 
   const roundedTemp = Math.floor(Number(temp));
   return (
-    <div className="bg-neutral-700 w-full flex items-center border border-neutral-600 text-neutral-0 py-1 bor px-2 font-DM-sans justify-between rounded-lg">
+    <div className="bg-neutral-700 w-full flex items-center border border-neutral-600 text-neutral-0 py-1  px-2 font-DM-sans justify-between rounded-lg">
       <span className="flex items-center gap-2 justify-center ">
         <img src={getWeatherIcon(weatherCode)} alt="weather image" className="w-10" />
         <h2>

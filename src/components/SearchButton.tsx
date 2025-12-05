@@ -2,7 +2,7 @@ const SearchButton = () => {
   return (
     <button
       type="submit"
-      className="bg-blue-500 hover:bg-blue-700 sm:max-w-[20%] rounded-xl text-neutral-0 py-3 text-lg font-DM-sans font-light w-full"
+      className="bg-blue-500 hover:bg-blue-700 sm:max-w-[20%] rounded-xl text-neutral-0 py-3 text-lg font-DM-sans font-light w-full cursor-pointer"
     >
       Search
     </button>
