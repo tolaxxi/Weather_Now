@@ -6,8 +6,8 @@ import useUnitContextProvider from '../contexts/unit/useUnitContextProvider';
 
 type HourlyData = {
   time: string;
-  temperature: number;
-  weatherCode: number;
+  temperature: string;
+  weatherCode: string;
 };
 
 const useWeather = () => {

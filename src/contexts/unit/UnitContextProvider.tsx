@@ -9,11 +9,11 @@ const UnitContextProvider = ({ children }: UnitContextProviderPropTypes) => {
   // space here
 
   const [isImperial, setIsImperial] = useState(false);
-  const [isCelsius, setIsCelsius] = useState(false);
+  const [isCelsius, setIsCelsius] = useState(true);
   const [isFahrenheit, setIsFahrenheit] = useState(false);
-  const [isKmh, setIsKmh] = useState(false);
+  const [isKmh, setIsKmh] = useState(true);
   const [isMph, setIsMph] = useState(false);
-  const [isMm, setIsMm] = useState(false);
+  const [isMm, setIsMm] = useState(true);
   const [isInch, setIsInch] = useState(false);
 
   const [unit, setUnit] = useState<'celsius' | 'fahrenheit'>('celsius');
