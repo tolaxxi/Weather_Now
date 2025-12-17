@@ -4,11 +4,13 @@ import useSearch from '../contexts/search/useSearch';
 import SearchButton from './SearchButton';
 import useWeather from '../hooks/useWeather';
 import SearchLoadingState from './SearchLoadingState';
+import useGeolocation from '../hooks/useGeolocation';
 
 const Search = () => {
   const [input, setInput] = useState('');
 
   const { setQuery } = useSearch();
+  const { geoLoading } = useGeolocation(input);
   const { loading } = useWeather();
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -33,7 +35,8 @@ const Search = () => {
             onChange={(e) => setInput(e.target.value)}
           />
         </div>
-        {loading && <SearchLoadingState />}
+
+        {geoLoading && <SearchLoadingState />}
       </div>
       <SearchButton />
     </form>
