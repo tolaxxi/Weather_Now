@@ -11,7 +11,6 @@ const Search = () => {
 
   const { setQuery } = useSearch();
   const { geoLoading } = useGeolocation(input);
-  const { loading } = useWeather();
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
