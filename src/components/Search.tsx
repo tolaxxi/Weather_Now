@@ -2,7 +2,6 @@ import { useState } from 'react';
 import searchIcon from '../assets/images/icon-search.svg';
 import useSearch from '../contexts/search/useSearch';
 import SearchButton from './SearchButton';
-import useWeather from '../hooks/useWeather';
 import SearchLoadingState from './SearchLoadingState';
 import useGeolocation from '../hooks/useGeolocation';
 
@@ -11,7 +10,6 @@ const Search = () => {
 
   const { setQuery } = useSearch();
   const { geoLoading } = useGeolocation(input);
-  const { loading } = useWeather();
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
